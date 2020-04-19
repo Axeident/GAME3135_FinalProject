@@ -49,4 +49,10 @@ namespace gl {
         gl::Program& program;
         glm::mat4 transform;
     };
+    class StellarObject : public Object {
+        using Object::Object; //Makes the StellarObject explicitly inherit Object's constructor
+        glm::vec3 offset;
+        glm::quat revolutionSpeed;
+        
+    };
 }
