@@ -50,9 +50,10 @@ namespace gl {
         glm::mat4 transform;
     };
     class StellarObject : public Object {
+    public:
         using Object::Object; //Makes the StellarObject explicitly inherit Object's constructor
         glm::vec3 offset;
-        glm::quat revolutionSpeed;
+        float degPerSec; //Degrees of revolution around sun per second
         
     };
 }

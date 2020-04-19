@@ -101,7 +101,7 @@ private:
     sdl::Library SDL2;
     Display display;
     bool running = true;
-    list<gl::Object*> objects;
+    list<gl::StellarObject*> objects;
 	list<function<bool(float, float)>> updates;
     gl::Program plain;
     Transform world_camera;
@@ -150,16 +150,13 @@ void Project::build_world()
     auto& w = objects;
     
     shared_ptr<const gl::Mesh> ball {new gl::Mesh{"sphere.obj"}};
-	gl::Object* a = new gl::Object{ ball, plain };
-	a->Translate(vec3{ 2.0f, 02.0f, 0.0f });
-	a->color = vec4{ 0.0f, 1.0f, 0.0f, 1.0f };
+	gl::StellarObject* a = new gl::StellarObject{ ball, plain };
+	a->Translate(a->offset);
+	a->color = vec4{ 1.0f, 1.0f, 1.0f, 1.0f };
 	a->shininess = 10;
 	a->highlight = vec3{ 1.0f };
+    a->degPerSec = 5.0f;
 	w.push_back(a);
-	gl::Object* b = new gl::Object{ new gl::Mesh{"cube.obj"}, plain };
-    b->Translate(vec3{-2.0f, 0.0f, 0.0f});
-    b->color = vec4{0.0f, 0.0f, 1.0f, 1.0f};
-    w.push_back(b);
 
 
 	updates.emplace_back([a](float seconds, float lifetime)->bool {a->shininess = 20 * sin(lifetime) + 20; return true; });
@@ -174,9 +171,14 @@ void Project::build_world()
 
 void Project::apply_time(float seconds, float lifetime) {
 	bool remove = false;
+
 	for (auto which = updates.begin(); which != updates.end(); remove? (which = updates.erase(which)): ++which) {
 		remove = !(*which)(seconds, lifetime);
 	}
+    //For each object, rotate around the 'up' axis by 'degPerSec' times 'seconds since last frame' every frame
+    for (gl::StellarObject* st : objects) {
+        st->Rotate(st->degPerSec * seconds, glm::vec3{0.0f, 1.0f, 0.0f});
+    }
 }
 
 void Project::processKey(const SDL_Keysym& keysym) {
