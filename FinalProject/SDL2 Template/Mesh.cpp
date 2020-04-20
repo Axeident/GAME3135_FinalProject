@@ -84,9 +84,29 @@ namespace gl {
     {
         transform = glm::rotate(transform, angle, axis);
     }
+
+    void Object::Orbit(float angle, vec3 axis)
+    {
+        transform = glm::rotate(glm::mat4{}, angle, axis) *transform;
+    }
     
     void Object::Translate(vec3 distance)
     {
         transform = glm::translate(transform, distance);
+    }
+
+
+    void StellarObject::SetStats(glm::vec3 orbitDist, float sunRot, float axisRot) {
+        orbitDistance = orbitDist;
+        sunRotation = sunRot;
+        axisRotaion = axisRot;
+    }
+
+    void StellarObject::Update(float deltaTime) {
+        // sun orbit
+        Rotate((deltaTime * sunRotation), vec3{0.0f, 1.0f, 0.0f});
+        // axis orbit
+        Orbit((deltaTime * sunRotation), vec3{ 0.0f, 1.0f, 0.0f });
+
     }
 }

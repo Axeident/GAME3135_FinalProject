@@ -38,6 +38,7 @@ namespace gl {
         void Render ( ) const;
         
         void Rotate(float angle, glm::vec3 axis);
+        void Orbit(float angle, glm::vec3 axis);
         void Translate(glm::vec3 distance);
         
 		glm::vec4 color{ 1.0f };
@@ -49,11 +50,15 @@ namespace gl {
         gl::Program& program;
         glm::mat4 transform;
     };
+
     class StellarObject : public Object {
     public:
         using Object::Object; //Makes the StellarObject explicitly inherit Object's constructor
-        glm::vec3 offset;
-        float degPerSec; //Degrees of revolution around sun per second
+        glm::vec3 orbitDistance;
+        float sunRotation; //Degrees of revolution around sun per second
+        float axisRotaion;
         
+        void SetStats(glm::vec3 orbitDist, float sunRot, float axisRot);
+        void Update(float timeDelta);
     };
 }

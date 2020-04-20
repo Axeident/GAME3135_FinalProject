@@ -127,7 +127,7 @@ Project::Project(GLsizei width, GLsizei height)
 			{ "group", gl::Vertex::Array::group },
         }
     },
-	world_camera{ vec3{0.0f, 2.0f, -6.0f} , glm::angleAxis(atan2(-2.0f, 6.0f), vec3{ 1.0f, 0.0f, 0.0f }) }
+	world_camera{ vec3{0.0f, 6.0f, -20.0f} , glm::angleAxis(atan2(-6.0f, 20.0f), vec3{ 1.0f, 0.0f, 0.0f }) }
 {
 	gl::Texture::init();
     setup_camera();
@@ -141,7 +141,7 @@ void Project::setup_camera()
     
     mat4 camera = world_camera;
 	plain.Uniform<mat4>("camera") = camera;
-    plain.Uniform<mat4>("projection") = glm::perspectiveLH(1.0f, 4.0f/3.0f, 1.0f, 20.0f);
+    plain.Uniform<mat4>("projection") = glm::perspectiveLH(1.0f, 4.0f/3.0f, 1.0f, 50.0f);
     plain.Uniform<mat4>("transform") = glm::mat4{};
 }
 
@@ -150,34 +150,37 @@ void Project::build_world()
     auto& w = objects;
     
     shared_ptr<const gl::Mesh> ball {new gl::Mesh{"sphere.obj"}};
-	gl::StellarObject* a = new gl::StellarObject{ ball, plain };
-	a->Translate(a->offset);
-	a->color = vec4{ 1.0f, 1.0f, 1.0f, 1.0f };
-	a->shininess = 10;
-	a->highlight = vec3{ 1.0f };
-    a->degPerSec = 5.0f;
+    shared_ptr<const gl::Mesh> planetEarth{ new gl::Mesh{"Earth.obj"} };
+
+	gl::StellarObject* a = new gl::StellarObject{ planetEarth, plain };
+    a->SetStats(vec3{ 6.0f, 0.0f, 0.0f }, 1.0f, 1.0f);
+    a->Translate(a->orbitDistance);
+	//a->color = vec4{ 0.0f, 1.0f, 1.0f, 1.0f };
+	a->shininess = 1;
+	a->highlight = vec3{ 0.1f };
+    a->surface = new gl::Texture(image::TGA{ "Earth_TEXTURE_CM.tga" });
 	w.push_back(a);
 
-
-	updates.emplace_back([a](float seconds, float lifetime)->bool {a->shininess = 20 * sin(lifetime) + 20; return true; });
+	/*updates.emplace_back([a](float seconds, float lifetime)->bool {a->shininess = 20 * sin(lifetime) + 20; return true; });
 	updates.emplace_back(
 		[this](float seconds, float lifetime)->bool {
 		plain.Uniform<vec3>("light_position") = vec3{ glm::rotate(mat4{}, seconds, vec3{0, 1, 0}) * vec4 { static_cast<vec3>(plain.Uniform<vec3>("light_position")), 1.0f } };
 			return true; 
 		}
-	);
+	);*/
 //	updates.emplace_back([a](float seconds, float lifetime)->bool {a->Rotate(seconds, vec3{ 0.0f, 1.0f, 0.0f }); return true; });
 }
 
 void Project::apply_time(float seconds, float lifetime) {
 	bool remove = false;
 
-	for (auto which = updates.begin(); which != updates.end(); remove? (which = updates.erase(which)): ++which) {
-		remove = !(*which)(seconds, lifetime);
-	}
+	//for (auto which = updates.begin(); which != updates.end(); remove? (which = updates.erase(which)): ++which) {
+	//	remove = !(*which)(seconds, lifetime);
+	//}
+
     //For each object, rotate around the 'up' axis by 'degPerSec' times 'seconds since last frame' every frame
     for (gl::StellarObject* st : objects) {
-        st->Rotate(st->degPerSec * seconds, glm::vec3{0.0f, 1.0f, 0.0f});
+        st->Update(seconds);
     }
 }
 
