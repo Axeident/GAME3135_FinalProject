@@ -156,7 +156,7 @@ void Project::build_world()
 
     // SUN
     gl::StellarObject* s = new gl::StellarObject{ planet, plain };
-    s->SetStats(vec3{ 0.0f, 0.0f, 0.0f }, 0.0f, 0.0f);
+    s->SetStats(vec3{ 0.0f, 0.0f, 0.0f }, 100.0f, 100.0f);
     s->Scale(0.8f);
     s->color = vec4{ 1.0f, 1.0f, 0.0f, 1.0f };
     s->shininess = 1;
@@ -166,7 +166,7 @@ void Project::build_world()
 
     //MERCURY
     gl::StellarObject* a = new gl::StellarObject{ planet, plain };
-    a->SetStats(vec3{ 0.39f, 0.0f, 0.0f }, 1.0f / (0.241), 1.0f);
+    a->SetStats(vec3{ 0.39f, 0.0f, 0.0f }, 0.241f, 58.646f);
     a->Translate(a->orbitDistance);
     a->Scale(0.382f);
     a->shininess = 1;
@@ -176,7 +176,7 @@ void Project::build_world()
 
     //VENUS
     gl::StellarObject* b = new gl::StellarObject{ planet, plain };
-    b->SetStats(vec3{ 0.723f, 0.0f, 0.0f }, 1.0f / (0.616), 1.0f);
+    b->SetStats(vec3{ 0.723f, 0.0f, 0.0f }, 0.616f, 116.75f);
     b->Translate(b->orbitDistance);
     b->Scale(0.949f);
     b->shininess = 1;
@@ -196,7 +196,7 @@ void Project::build_world()
 
     //MARS
     gl::StellarObject* d = new gl::StellarObject{ planet, plain };
-    d->SetStats(vec3{ 1.524f, 0.0f, 0.0f }, 1.0f / (1.88), 1.1f);
+    d->SetStats(vec3{ 1.524f, 0.0f, 0.0f }, 1.88f, 1.02f);
     d->Translate(d->orbitDistance);
     d->Scale(0.532f);
     d->shininess = 1;
@@ -206,7 +206,7 @@ void Project::build_world()
 
     //JUPITER
     gl::StellarObject* e = new gl::StellarObject{ planet, plain };
-    e->SetStats(vec3{ 0.0f, 0.0f, 5.203f }, 1.0f / (12.0), 1.0f);
+    e->SetStats(vec3{ 0.0f, 0.0f, 5.203f }, 12.0f, 0.415f);
     e->Translate(e->orbitDistance);
     e->Scale(11.194f);
     e->shininess = 1;
@@ -216,7 +216,7 @@ void Project::build_world()
 
     //SATURN
     gl::StellarObject* f = new gl::StellarObject{ planet, plain };
-    f->SetStats(vec3{ 0.0f, 0.0f, 9.539f }, 1.0f / (29.0), 1.0f);
+    f->SetStats(vec3{ 0.0f, 0.0f, 9.539f }, 29.0f, 0.445f);
     f->Translate(f->orbitDistance);
     f->Scale(9.459f);
     f->shininess = 1;
@@ -226,7 +226,7 @@ void Project::build_world()
 
     //URANUS
     gl::StellarObject* g = new gl::StellarObject{ planet, plain };
-    g->SetStats(vec3{ 0.0f, 0.0f, 19.18f }, 1.0f/(84.0), 1.0f);
+    g->SetStats(vec3{ 0.0f, 0.0f, 19.18f }, 84.0f, 0.718f);
     g->Translate(g->orbitDistance);
     g->Scale(4.007f);
     g->shininess = 1;
@@ -236,7 +236,7 @@ void Project::build_world()
 
     //NEPTUNE
     gl::StellarObject* h = new gl::StellarObject{ planet, plain };
-    h->SetStats(vec3{ 0.0f, 0.0f, 30.06f }, 1.0f/(165.0), 1.0f);
+    h->SetStats(vec3{ 0.0f, 0.0f, 30.06f },165.0f, 0.671f);
     h->Translate(h->orbitDistance);
     h->Scale(3.81f);
     h->shininess = 1;

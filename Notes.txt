@@ -1,22 +1,22 @@
 Length of 'years' orbits:
-Mercury 88 days
-Venus 225 days
-Earth 365 days
-Mars 687 days
-Jupiter 12 years
-Saturn 29 years
-Uranus 84 years
-Neptune 165 years
+Mercury 88 days : 0.241
+Venus 225 days : 0.616
+Earth 365 days : 1.0
+Mars 687 days : 1.88
+Jupiter 12 years :  12.0
+Saturn 29 years : 29.0
+Uranus 84 years : 84.0
+Neptune 165 years : 165.0
 
 Length of 'day' orbits:
-Mercury 58d 15h 30m
-Venus 116d 18h
+Mercury 58.646d
+Venus 116.75d
 Earth 1d
-Mars 1d 37m
-Jupiter 9h 56m
-Saturn 10h 42m
-Uranus 17h 14m
-Neptune 16h 6m
+Mars 1.02d
+Jupiter 0.415d
+Saturn 0.445d
+Uranus 0.718d
+Neptune 0.671
 
 Distance from sun:
 Mercury 0.39 AU

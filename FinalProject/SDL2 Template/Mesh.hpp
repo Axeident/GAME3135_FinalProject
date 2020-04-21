@@ -57,7 +57,7 @@ namespace gl {
         using Object::Object; //Makes the StellarObject explicitly inherit Object's constructor
         glm::vec3 orbitDistance;
         float sunRotation; //Degrees of revolution around sun per second
-        float axisRotaion;
+        float axisRotation;
         
         void SetStats(glm::vec3 orbitDist, float sunRot, float axisRot);
         void Update(float timeDelta);

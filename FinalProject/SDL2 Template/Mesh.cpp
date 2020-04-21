@@ -107,14 +107,14 @@ namespace gl {
     void StellarObject::SetStats(glm::vec3 orbitDist, float sunRot, float axisRot) {
         orbitDistance = orbitDist * vec3{ 10.0f };
         sunRotation = sunRot;
-        axisRotaion = axisRot;
+        axisRotation = axisRot;
     }
 
     void StellarObject::Update(float deltaTime) {
-        // sun orbit
-        Rotate((deltaTime * sunRotation), vec3{0.0f, 1.0f, 0.0f});
         // axis orbit
-        Orbit((deltaTime * sunRotation), vec3{ 0.0f, 1.0f, 0.0f });
+        Rotate((deltaTime * (1.0f/axisRotation)), vec3{0.0f, 1.0f, 0.0f});
+        // sun orbit
+        Orbit((deltaTime * (1.0f/sunRotation)), vec3{ 0.0f, 1.0f, 0.0f });
 
     }
 }
