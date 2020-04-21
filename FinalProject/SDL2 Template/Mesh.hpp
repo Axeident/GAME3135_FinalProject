@@ -40,6 +40,7 @@ namespace gl {
         void Rotate(float angle, glm::vec3 axis);
         void Orbit(float angle, glm::vec3 axis);
         void Translate(glm::vec3 distance);
+        void Scale(glm::vec3 scale);
         
 		glm::vec4 color{ 1.0f };
 		gl::Texture* surface{ nullptr };
@@ -60,5 +61,6 @@ namespace gl {
         
         void SetStats(glm::vec3 orbitDist, float sunRot, float axisRot);
         void Update(float timeDelta);
+        void Scale(float percent);
     };
 }

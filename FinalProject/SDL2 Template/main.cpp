@@ -141,42 +141,112 @@ void Project::setup_camera()
     
     mat4 camera = world_camera;
 	plain.Uniform<mat4>("camera") = camera;
-    plain.Uniform<mat4>("projection") = glm::perspectiveLH(1.0f, 4.0f/3.0f, 1.0f, 50.0f);
+    plain.Uniform<mat4>("projection") = glm::perspectiveLH(1.0f, 4.0f/3.0f, 1.0f, 250.0f);
     plain.Uniform<mat4>("transform") = glm::mat4{};
 }
 
 void Project::build_world()
 {
-    auto& w = objects;
+    auto& objs = objects;
     
-    shared_ptr<const gl::Mesh> ball {new gl::Mesh{"sphere.obj"}};
-    shared_ptr<const gl::Mesh> planetEarth{ new gl::Mesh{"Earth.obj"} };
+    shared_ptr<const gl::Mesh> ball {new gl::Mesh{"Objects/sphere.obj"}};
+    shared_ptr<const gl::Mesh> planet{ new gl::Mesh{"Objects/Earth.obj"} };
 
-	gl::StellarObject* a = new gl::StellarObject{ planetEarth, plain };
-    a->SetStats(vec3{ 6.0f, 0.0f, 0.0f }, 1.0f, 1.0f);
+    //THIS SHIT NEEDS A FUNCTION
+
+    // SUN
+    gl::StellarObject* s = new gl::StellarObject{ planet, plain };
+    s->SetStats(vec3{ 0.0f, 0.0f, 0.0f }, 0.0f, 0.0f);
+    s->Scale(0.8f);
+    s->color = vec4{ 1.0f, 1.0f, 0.0f, 1.0f };
+    s->shininess = 1;
+    s->highlight = vec3{ 0.1f };
+    s->surface = new gl::Texture(image::TGA{ "Objects/2k_sun.tga" });
+    objs.push_back(s);
+
+    //MERCURY
+    gl::StellarObject* a = new gl::StellarObject{ planet, plain };
+    a->SetStats(vec3{ 0.39f, 0.0f, 0.0f }, 1.0f / (0.241), 1.0f);
     a->Translate(a->orbitDistance);
-	//a->color = vec4{ 0.0f, 1.0f, 1.0f, 1.0f };
-	a->shininess = 1;
-	a->highlight = vec3{ 0.1f };
-    a->surface = new gl::Texture(image::TGA{ "Earth_TEXTURE_CM.tga" });
-	w.push_back(a);
+    a->Scale(0.382f);
+    a->shininess = 1;
+    a->highlight = vec3{ 0.1f };
+    a->surface = new gl::Texture(image::TGA{ "Objects/2k_mercury.tga" });
+    objs.push_back(a);
 
-	/*updates.emplace_back([a](float seconds, float lifetime)->bool {a->shininess = 20 * sin(lifetime) + 20; return true; });
-	updates.emplace_back(
-		[this](float seconds, float lifetime)->bool {
-		plain.Uniform<vec3>("light_position") = vec3{ glm::rotate(mat4{}, seconds, vec3{0, 1, 0}) * vec4 { static_cast<vec3>(plain.Uniform<vec3>("light_position")), 1.0f } };
-			return true; 
-		}
-	);*/
-//	updates.emplace_back([a](float seconds, float lifetime)->bool {a->Rotate(seconds, vec3{ 0.0f, 1.0f, 0.0f }); return true; });
+    //VENUS
+    gl::StellarObject* b = new gl::StellarObject{ planet, plain };
+    b->SetStats(vec3{ 0.723f, 0.0f, 0.0f }, 1.0f / (0.616), 1.0f);
+    b->Translate(b->orbitDistance);
+    b->Scale(0.949f);
+    b->shininess = 1;
+    b->highlight = vec3{ 0.1f };
+    b->surface = new gl::Texture(image::TGA{ "Objects/2k_venus_atmosphere.tga" });
+    objs.push_back(b);
+
+    //EARTH
+	gl::StellarObject* c = new gl::StellarObject{ planet, plain };
+    c->SetStats(vec3{ 1.0f, 0.0f, 0.0f }, 1.0f, 1.0f);
+    c->Translate(c->orbitDistance);
+    c->Scale(1.0f);
+	c->shininess = 1;
+	c->highlight = vec3{ 0.1f };
+    c->surface = new gl::Texture(image::TGA{ "Objects/Earth_TEXTURE_CM.tga" });
+	objs.push_back(c);
+
+    //MARS
+    gl::StellarObject* d = new gl::StellarObject{ planet, plain };
+    d->SetStats(vec3{ 1.524f, 0.0f, 0.0f }, 1.0f / (1.88), 1.1f);
+    d->Translate(d->orbitDistance);
+    d->Scale(0.532f);
+    d->shininess = 1;
+    d->highlight = vec3{ 0.1f };
+    d->surface = new gl::Texture(image::TGA{ "Objects/2k_mars.tga" });
+    objs.push_back(d);
+
+    //JUPITER
+    gl::StellarObject* e = new gl::StellarObject{ planet, plain };
+    e->SetStats(vec3{ 0.0f, 0.0f, 5.203f }, 1.0f / (12.0), 1.0f);
+    e->Translate(e->orbitDistance);
+    e->Scale(11.194f);
+    e->shininess = 1;
+    e->highlight = vec3{ 0.1f };
+    e->surface = new gl::Texture(image::TGA{ "Objects/2k_jupiter.tga" });
+    objs.push_back(e);
+
+    //SATURN
+    gl::StellarObject* f = new gl::StellarObject{ planet, plain };
+    f->SetStats(vec3{ 0.0f, 0.0f, 9.539f }, 1.0f / (29.0), 1.0f);
+    f->Translate(f->orbitDistance);
+    f->Scale(9.459f);
+    f->shininess = 1;
+    f->highlight = vec3{ 0.1f };
+    f->surface = new gl::Texture(image::TGA{ "Objects/2k_saturn.tga" });
+    objs.push_back(f);
+
+    //URANUS
+    gl::StellarObject* g = new gl::StellarObject{ planet, plain };
+    g->SetStats(vec3{ 0.0f, 0.0f, 19.18f }, 1.0f/(84.0), 1.0f);
+    g->Translate(g->orbitDistance);
+    g->Scale(4.007f);
+    g->shininess = 1;
+    g->highlight = vec3{ 0.1f };
+    g->surface = new gl::Texture(image::TGA{ "Objects/2k_uranus.tga" });
+    objs.push_back(g);
+
+    //NEPTUNE
+    gl::StellarObject* h = new gl::StellarObject{ planet, plain };
+    h->SetStats(vec3{ 0.0f, 0.0f, 30.06f }, 1.0f/(165.0), 1.0f);
+    h->Translate(h->orbitDistance);
+    h->Scale(3.81f);
+    h->shininess = 1;
+    h->highlight = vec3{ 0.1f };
+    h->surface = new gl::Texture(image::TGA{ "Objects/2k_neptune.tga" });
+    objs.push_back(h);
 }
 
 void Project::apply_time(float seconds, float lifetime) {
 	bool remove = false;
-
-	//for (auto which = updates.begin(); which != updates.end(); remove? (which = updates.erase(which)): ++which) {
-	//	remove = !(*which)(seconds, lifetime);
-	//}
 
     //For each object, rotate around the 'up' axis by 'degPerSec' times 'seconds since last frame' every frame
     for (gl::StellarObject* st : objects) {

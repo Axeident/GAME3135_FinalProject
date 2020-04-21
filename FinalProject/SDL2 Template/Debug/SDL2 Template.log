@@ -11,23 +11,17 @@ Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec4.hpp(12
 Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec4.hpp(350): message : see reference to class template instantiation 'glm::tvec4<T,P>' being compiled
 Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec4.hpp(121,1): warning C4201: nonstandard extension used: nameless struct/union
 Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec4.hpp(122,1): warning C4201: nonstandard extension used: nameless struct/union
-Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\main.cpp(174,47): warning C4100: 'lifetime': unreferenced formal parameter
-Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\main.cpp(175,7): warning C4189: 'remove': local variable is initialized but not referenced
-Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\main.cpp(227,47): warning C4100: 'args': unreferenced formal parameter
+Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\main.cpp(248,47): warning C4100: 'lifetime': unreferenced formal parameter
+Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\main.cpp(249,7): warning C4189: 'remove': local variable is initialized but not referenced
+Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\main.cpp(297,47): warning C4100: 'args': unreferenced formal parameter
   SDL2 Template.vcxproj -> Q:\Github\GAME3135_FinalProject\FinalProject\Debug\SDL2 Template.exe
   Q:\Github\GAME3135_FinalProject\FinalProject\lib\x86\glew32.dll
   Q:\Github\GAME3135_FinalProject\FinalProject\lib\x86\SDL2.dll
   2 File(s) copied
-  Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\2k_mars.tga
-  Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\Earth_TEXTURE_CM.tga
-  2 File(s) copied
+  File not found - *.tga
+  0 File(s) copied
   Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\layer_fragment.glsl
   Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\layer_vertex.glsl
   2 File(s) copied
-  Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\cube.obj
-  Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\Earth.obj
-  Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\icosa.obj
-  Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\Mars.obj
-  Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\octo.obj
-  Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\sphere.obj
-  6 File(s) copied
+  File not found - *.obj
+  0 File(s) copied

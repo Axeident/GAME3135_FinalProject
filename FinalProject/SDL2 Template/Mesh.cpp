@@ -95,9 +95,17 @@ namespace gl {
         transform = glm::translate(transform, distance);
     }
 
+    void Object::Scale(vec3 scale) {
+        transform = glm::scale(transform, scale);
+    }
+
+    void StellarObject::Scale(float percent) {
+        transform = glm::scale(transform, vec3{ percent, percent, percent }* vec3{ 0.25f });
+    }
+
 
     void StellarObject::SetStats(glm::vec3 orbitDist, float sunRot, float axisRot) {
-        orbitDistance = orbitDist;
+        orbitDistance = orbitDist * vec3{ 10.0f };
         sunRotation = sunRot;
         axisRotaion = axisRot;
     }

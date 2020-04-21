@@ -29,11 +29,11 @@ Uranus 19.18 AU
 Neptune 30.06 AU
 
 Diameter (handled by model?)
-Mercury 4878km
-Venus 12104km
-Earth 12756km
-Mars 6787km
-Jupiter 142796km
-Saturn 120660km
-Uranus 51118km
-Neptune 48600km
+Mercury 4878km : 0.382
+Venus 12104km : 0.949
+Earth 12756km : 1.0
+Mars 6787km : 0.532
+Jupiter 142796km : 11.194
+Saturn 120660km : 9.459
+Uranus 51118km : 4.007
+Neptune 48600km : 3.810
