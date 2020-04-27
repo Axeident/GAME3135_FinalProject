@@ -10,6 +10,7 @@
 #include <fstream>
 #include <sstream>
 #include <list>
+#include <vector>
 #include <map>
 #include <functional>
 
@@ -101,10 +102,12 @@ private:
     sdl::Library SDL2;
     Display display;
     bool running = true;
-    list<gl::StellarObject*> objects;
+    vector<gl::StellarObject*> objects; //needs to be indexable for the camera to grab the correct planet to track
+    gl::StellarObject* cameraFocus; //needed so that the camera can update to the tracking position each frame
 	list<function<bool(float, float)>> updates;
     gl::Program plain;
     Transform world_camera;
+    Transform cameraDefault;
     
     void setup_camera();
     void build_world();
@@ -117,7 +120,7 @@ private:
 };
 
 Project::Project(GLsizei width, GLsizei height)
-:   SDL2 {SDL_INIT_VIDEO}, display {width, height},
+:   SDL2 {SDL_INIT_VIDEO}, display {width, height}, cameraFocus{nullptr},
     plain {
         gl::Shader {GL_VERTEX_SHADER, from_file("layer_vertex.glsl")}, gl::Shader {GL_FRAGMENT_SHADER, from_file("layer_fragment.glsl")},
         map<string, GLint> {
@@ -127,7 +130,8 @@ Project::Project(GLsizei width, GLsizei height)
 			{ "group", gl::Vertex::Array::group },
         }
     },
-	world_camera{ vec3{0.0f, 6.0f, -20.0f} , glm::angleAxis(atan2(-6.0f, 20.0f), vec3{ 1.0f, 0.0f, 0.0f }) }
+	world_camera{ vec3{0.0f, 6.0f, -20.0f} , glm::angleAxis(atan2(-6.0f, 20.0f), vec3{ 1.0f, 0.0f, 0.0f }) },
+    cameraDefault{ world_camera }
 {
 	gl::Texture::init();
     setup_camera();
@@ -252,12 +256,53 @@ void Project::apply_time(float seconds, float lifetime) {
     for (gl::StellarObject* st : objects) {
         st->Update(seconds);
     }
+
+    //Update camera position
+    if (cameraFocus == nullptr) {
+        plain.Uniform<mat4>("camera") = cameraDefault;
+    }
+    else
+    {
+        //Updates location while ignoring rotation
+        Transform newPos{ cameraFocus->getLocation() + world_camera.position, world_camera.rotation };
+        plain.Uniform<mat4>("camera") = newPos;
+    }
 }
 
 void Project::processKey(const SDL_Keysym& keysym) {
     switch( keysym.sym ) {
         case SDLK_ESCAPE:
             running = false;
+            break;
+        case SDLK_0: //Default view
+            cameraFocus = nullptr;
+            break;
+        case SDLK_1: //Sun view
+            cameraFocus = objects[0];
+            break;
+        case SDLK_2: //Mercury view
+            cameraFocus = objects[1];
+            break;
+        case SDLK_3: //Venus view
+            cameraFocus = objects[2];
+            break;
+        case SDLK_4: //Earth view
+            cameraFocus = objects[3];
+            break;
+        case SDLK_5: //Mars view
+            cameraFocus = objects[4];
+            break;
+        case SDLK_6: //Jupiter view
+            cameraFocus = objects[5];
+            break;
+        case SDLK_7: //Saturn view
+            cameraFocus = objects[6];
+            break;
+        case SDLK_8: //Uranus view
+            cameraFocus = objects[7];
+            break;
+        case SDLK_9: //Neptune view
+            cameraFocus = objects[8];
             break;
         default:
             break;

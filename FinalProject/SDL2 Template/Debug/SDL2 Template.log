@@ -1,27 +1,24 @@
-﻿  main.cpp
-Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec2.hpp(66,1): warning C4201: nonstandard extension used: nameless struct/union
-Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec2.hpp(229): message : see reference to class template instantiation 'glm::tvec2<T,P>' being compiled
-Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec2.hpp(67,1): warning C4201: nonstandard extension used: nameless struct/union
-Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec2.hpp(68,1): warning C4201: nonstandard extension used: nameless struct/union
-Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec3.hpp(66,1): warning C4201: nonstandard extension used: nameless struct/union
-Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec3.hpp(251): message : see reference to class template instantiation 'glm::tvec3<T,P>' being compiled
-Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec3.hpp(67,1): warning C4201: nonstandard extension used: nameless struct/union
-Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec3.hpp(68,1): warning C4201: nonstandard extension used: nameless struct/union
-Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec4.hpp(120,1): warning C4201: nonstandard extension used: nameless struct/union
-Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec4.hpp(350): message : see reference to class template instantiation 'glm::tvec4<T,P>' being compiled
-Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec4.hpp(121,1): warning C4201: nonstandard extension used: nameless struct/union
-Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec4.hpp(122,1): warning C4201: nonstandard extension used: nameless struct/union
-Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\main.cpp(248,47): warning C4100: 'lifetime': unreferenced formal parameter
-Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\main.cpp(249,7): warning C4189: 'remove': local variable is initialized but not referenced
-Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\main.cpp(297,47): warning C4100: 'args': unreferenced formal parameter
-  SDL2 Template.vcxproj -> Q:\Github\GAME3135_FinalProject\FinalProject\Debug\SDL2 Template.exe
-  Q:\Github\GAME3135_FinalProject\FinalProject\lib\x86\glew32.dll
-  Q:\Github\GAME3135_FinalProject\FinalProject\lib\x86\SDL2.dll
+﻿  Mesh.cpp
+C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec2.hpp(66,1): warning C4201: nonstandard extension used: nameless struct/union
+C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec2.hpp(229): message : see reference to class template instantiation 'glm::tvec2<T,P>' being compiled
+C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec2.hpp(67,1): warning C4201: nonstandard extension used: nameless struct/union
+C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec2.hpp(68,1): warning C4201: nonstandard extension used: nameless struct/union
+C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec3.hpp(66,1): warning C4201: nonstandard extension used: nameless struct/union
+C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec3.hpp(251): message : see reference to class template instantiation 'glm::tvec3<T,P>' being compiled
+C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec3.hpp(67,1): warning C4201: nonstandard extension used: nameless struct/union
+C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec3.hpp(68,1): warning C4201: nonstandard extension used: nameless struct/union
+C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec4.hpp(120,1): warning C4201: nonstandard extension used: nameless struct/union
+C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec4.hpp(350): message : see reference to class template instantiation 'glm::tvec4<T,P>' being compiled
+C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec4.hpp(121,1): warning C4201: nonstandard extension used: nameless struct/union
+C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec4.hpp(122,1): warning C4201: nonstandard extension used: nameless struct/union
+  SDL2 Template.vcxproj -> C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\Debug\SDL2 Template.exe
+  C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\lib\x86\glew32.dll
+  C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\lib\x86\SDL2.dll
   2 File(s) copied
   File not found - *.tga
   0 File(s) copied
-  Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\layer_fragment.glsl
-  Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\layer_vertex.glsl
+  C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\SDL2 Template\layer_fragment.glsl
+  C:\Projects\BeckerGameStudio\JourneyToBlackwood\GAME3135_FinalProject\FinalProject\SDL2 Template\layer_vertex.glsl
   2 File(s) copied
   File not found - *.obj
   0 File(s) copied

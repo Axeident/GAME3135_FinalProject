@@ -98,11 +98,17 @@ namespace gl {
     void Object::Scale(vec3 scale) {
         transform = glm::scale(transform, scale);
     }
+    
+    //A dirty sort of way of decomposing the matrix to get the transform components, but I can't think of another way to do it other than changing the way that Objects store and modifiy their location information
+    //Also OpenGL uses column major matrices which is why the column comes first then the row
+    vec3 StellarObject::getLocation() {
+        vec3 loc{ transform[3][0], transform[3][1], transform[3][2] };
+        return loc;
+    }
 
     void StellarObject::Scale(float percent) {
         transform = glm::scale(transform, vec3{ percent, percent, percent }* vec3{ 0.25f });
     }
-
 
     void StellarObject::SetStats(glm::vec3 orbitDist, float sunRot, float axisRot) {
         orbitDistance = orbitDist * vec3{ 10.0f };

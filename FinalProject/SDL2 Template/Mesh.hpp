@@ -58,6 +58,8 @@ namespace gl {
         glm::vec3 orbitDistance;
         float sunRotation; //Degrees of revolution around sun per second
         float axisRotation;
+
+        glm::vec3 getLocation();
         
         void SetStats(glm::vec3 orbitDist, float sunRot, float axisRot);
         void Update(float timeDelta);
