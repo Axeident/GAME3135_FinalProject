@@ -29,6 +29,7 @@ Uranus 19.18 AU
 Neptune 30.06 AU
 
 Diameter (handled by model?)
+SUN: 1392680km : 109.178
 Mercury 4878km : 0.382
 Venus 12104km : 0.949
 Earth 12756km : 1.0
@@ -37,3 +38,16 @@ Jupiter 142796km : 11.194
 Saturn 120660km : 9.459
 Uranus 51118km : 4.007
 Neptune 48600km : 3.810
+
+Axial Offsets (in radians)
+Sun: 0
+Mercury : 0
+Venus : 3.089f
+Earth : 0.410f
+Mars : 0.4363f
+Jupiter : 0.0524f
+Saturn : 0.471f
+Uranus : 1.71f
+Neptune : 0.5236f
+
+Texture sources: https://www.solarsystemscope.com/textures/

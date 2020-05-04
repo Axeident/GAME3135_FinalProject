@@ -145,7 +145,8 @@ void Project::setup_camera()
     
     mat4 camera = world_camera;
 	plain.Uniform<mat4>("camera") = camera;
-    plain.Uniform<mat4>("projection") = glm::perspectiveLH(1.0f, 4.0f/3.0f, 1.0f, 250.0f);
+    //plain.Uniform<mat4>("projection") = glm::perspectiveLH(1.0f, 4.0f / 3.0f, 1.0f, 250.0f);
+    plain.Uniform<mat4>("projection") = glm::perspectiveLH(1.0f, 16.0f/9.0f, 1.0f, 250.0f);
     plain.Uniform<mat4>("transform") = glm::mat4{};
 }
 
@@ -155,6 +156,7 @@ void Project::build_world()
     
     shared_ptr<const gl::Mesh> ball {new gl::Mesh{"Objects/sphere.obj"}};
     shared_ptr<const gl::Mesh> planet{ new gl::Mesh{"Objects/Earth.obj"} };
+    shared_ptr<const gl::Mesh> saturn{ new gl::Mesh{"Objects/saturn.obj"} };
 
     //THIS SHIT NEEDS A FUNCTION
 
@@ -183,6 +185,7 @@ void Project::build_world()
     b->SetStats(vec3{ 0.723f, 0.0f, 0.0f }, 0.616f, 116.75f);
     b->Translate(b->orbitDistance);
     b->Scale(0.949f);
+    b->Rotate(3.089f, vec3{ 0.0f, 0.0f, -1.0f });
     b->shininess = 1;
     b->highlight = vec3{ 0.1f };
     b->surface = new gl::Texture(image::TGA{ "Objects/2k_venus_atmosphere.tga" });
@@ -193,6 +196,7 @@ void Project::build_world()
     c->SetStats(vec3{ 1.0f, 0.0f, 0.0f }, 1.0f, 1.0f);
     c->Translate(c->orbitDistance);
     c->Scale(1.0f);
+    c->Rotate(0.410f, vec3{ 0.0f, 0.0f, -1.0f });
 	c->shininess = 1;
 	c->highlight = vec3{ 0.1f };
     c->surface = new gl::Texture(image::TGA{ "Objects/Earth_TEXTURE_CM.tga" });
@@ -203,6 +207,7 @@ void Project::build_world()
     d->SetStats(vec3{ 1.524f, 0.0f, 0.0f }, 1.88f, 1.02f);
     d->Translate(d->orbitDistance);
     d->Scale(0.532f);
+    d->Rotate(0.4363f, vec3{ 0.0f, 0.0f, -1.0f });
     d->shininess = 1;
     d->highlight = vec3{ 0.1f };
     d->surface = new gl::Texture(image::TGA{ "Objects/2k_mars.tga" });
@@ -213,6 +218,7 @@ void Project::build_world()
     e->SetStats(vec3{ 0.0f, 0.0f, 5.203f }, 12.0f, 0.415f);
     e->Translate(e->orbitDistance);
     e->Scale(11.194f);
+    e->Rotate(0.0524f, vec3{ 0.0f, 0.0f, -1.0f });
     e->shininess = 1;
     e->highlight = vec3{ 0.1f };
     e->surface = new gl::Texture(image::TGA{ "Objects/2k_jupiter.tga" });
@@ -223,6 +229,8 @@ void Project::build_world()
     f->SetStats(vec3{ 0.0f, 0.0f, 9.539f }, 29.0f, 0.445f);
     f->Translate(f->orbitDistance);
     f->Scale(9.459f);
+    f->Rotate(0.471f, vec3{ 0.0f, 0.0f, -1.0f });
+    //s->color = vec4{ 1.0f, 1.0f, 0.0f, 1.0f };
     f->shininess = 1;
     f->highlight = vec3{ 0.1f };
     f->surface = new gl::Texture(image::TGA{ "Objects/2k_saturn.tga" });
@@ -233,6 +241,7 @@ void Project::build_world()
     g->SetStats(vec3{ 0.0f, 0.0f, 19.18f }, 84.0f, 0.718f);
     g->Translate(g->orbitDistance);
     g->Scale(4.007f);
+    g->Rotate(1.71f, vec3{ 0.0f, 0.0f, -1.0f });
     g->shininess = 1;
     g->highlight = vec3{ 0.1f };
     g->surface = new gl::Texture(image::TGA{ "Objects/2k_uranus.tga" });
@@ -243,6 +252,7 @@ void Project::build_world()
     h->SetStats(vec3{ 0.0f, 0.0f, 30.06f },165.0f, 0.671f);
     h->Translate(h->orbitDistance);
     h->Scale(3.81f);
+    h->Rotate(0.5236f, vec3{ 0.0f, 0.0f, -1.0f });
     h->shininess = 1;
     h->highlight = vec3{ 0.1f };
     h->surface = new gl::Texture(image::TGA{ "Objects/2k_neptune.tga" });
@@ -353,7 +363,9 @@ int Project::operator()(const vector<string>& args) {
 
 int main(int argc, char* argv[]) {
     try {
-        return Project {640, 480}(vector<string>{argv, argv + argc});
+
+        return Project{ 1920, 1080 }(vector<string>{argv, argv + argc});
+        //return Project {640, 480}(vector<string>{argv, argv + argc});
     } catch (std::exception& e) {
         cerr << e.what() <<endl;
         return 1;

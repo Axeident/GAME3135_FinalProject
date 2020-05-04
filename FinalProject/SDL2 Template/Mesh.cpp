@@ -9,6 +9,8 @@
 #include "Mesh.hpp"
 #include "MeshFile.hpp"
 
+#include <math.h>
+
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
@@ -110,7 +112,7 @@ namespace gl {
         transform = glm::scale(transform, vec3{ percent, percent, percent }* vec3{ 0.25f });
     }
 
-    void StellarObject::SetStats(glm::vec3 orbitDist, float sunRot, float axisRot) {
+    void StellarObject::SetStats(glm::vec3 orbitDist, float sunRot, float axisRot ) {
         orbitDistance = orbitDist * vec3{ 10.0f };
         sunRotation = sunRot;
         axisRotation = axisRot;
@@ -118,7 +120,7 @@ namespace gl {
 
     void StellarObject::Update(float deltaTime) {
         // axis orbit
-        Rotate((deltaTime * (1.0f/axisRotation)), vec3{0.0f, 1.0f, 0.0f});
+        Rotate((deltaTime * (1.0f/axisRotation)), vec3{0.0f, 1.0f , 0.0f});
         // sun orbit
         Orbit((deltaTime * (1.0f/sunRotation)), vec3{ 0.0f, 1.0f, 0.0f });
 
