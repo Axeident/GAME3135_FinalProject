@@ -108,8 +108,8 @@ namespace gl {
         return loc;
     }
 
-    void StellarObject::Scale(float percent) {
-        transform = glm::scale(transform, vec3{ percent, percent, percent }* vec3{ 0.25f });
+    void StellarObject::Scale(float percent, vec3 ratio) {
+        transform = glm::scale(transform, vec3{ percent * ratio.x, percent * ratio.y, percent*ratio.z }* vec3{ 0.25f });
     }
 
     void StellarObject::SetStats(glm::vec3 orbitDist, float sunRot, float axisRot ) {

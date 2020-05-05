@@ -146,7 +146,7 @@ void Project::setup_camera()
     mat4 camera = world_camera;
 	plain.Uniform<mat4>("camera") = camera;
     //plain.Uniform<mat4>("projection") = glm::perspectiveLH(1.0f, 4.0f / 3.0f, 1.0f, 250.0f);
-    plain.Uniform<mat4>("projection") = glm::perspectiveLH(1.0f, 16.0f/9.0f, 1.0f, 250.0f);
+    plain.Uniform<mat4>("projection") = glm::perspectiveLH(1.0f, 16.0f/9.0f, 1.0f, 500.0f);
     plain.Uniform<mat4>("transform") = glm::mat4{};
 }
 
@@ -154,7 +154,7 @@ void Project::build_world()
 {
     auto& objs = objects;
     
-    shared_ptr<const gl::Mesh> ball {new gl::Mesh{"Objects/sphere.obj"}};
+    shared_ptr<const gl::Mesh> cube {new gl::Mesh{"Objects/cube2.obj"}};
     shared_ptr<const gl::Mesh> planet{ new gl::Mesh{"Objects/Earth.obj"} };
     shared_ptr<const gl::Mesh> saturn{ new gl::Mesh{"Objects/saturn.obj"} };
 
@@ -257,6 +257,16 @@ void Project::build_world()
     h->highlight = vec3{ 0.1f };
     h->surface = new gl::Texture(image::TGA{ "Objects/2k_neptune.tga" });
     objs.push_back(h);
+
+    gl::StellarObject* x = new gl::StellarObject{ cube, plain };
+    x->SetStats(vec3{ 0.0f, -15.0f, 60.0f }, INFINITY, INFINITY);
+    x->Translate(x->orbitDistance);
+    x->Scale(1000.0f, vec3(2.0f, 1.0f, 1.0f));
+    x->Rotate(-0.5f * M_PI , vec3{ 0.0f, 1.0f, 0.0f });
+    x->shininess = 0;
+    x->highlight = vec3{ 0.0f };
+    x->surface = new gl::Texture(image::TGA{ "Objects/2k_stars.tga" });
+    objs.push_back(x);
 }
 
 void Project::apply_time(float seconds, float lifetime) {

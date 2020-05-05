@@ -63,6 +63,6 @@ namespace gl {
         
         void SetStats(glm::vec3 orbitDist, float sunRot, float axisRot);
         void Update(float timeDelta);
-        void Scale(float percent);
+        void Scale(float percent, glm::vec3 ratio = glm::vec3{ 1.0f, 1.0f, 1.0f });
     };
 }

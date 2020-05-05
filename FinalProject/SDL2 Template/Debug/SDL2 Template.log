@@ -11,9 +11,9 @@ Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec4.hpp(12
 Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec4.hpp(350): message : see reference to class template instantiation 'glm::tvec4<T,P>' being compiled
 Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec4.hpp(121,1): warning C4201: nonstandard extension used: nameless struct/union
 Q:\Github\GAME3135_FinalProject\FinalProject\include\glm\detail\type_vec4.hpp(122,1): warning C4201: nonstandard extension used: nameless struct/union
-Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\main.cpp(262,47): warning C4100: 'lifetime': unreferenced formal parameter
-Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\main.cpp(263,7): warning C4189: 'remove': local variable is initialized but not referenced
-Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\main.cpp(352,47): warning C4100: 'args': unreferenced formal parameter
+Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\main.cpp(272,47): warning C4100: 'lifetime': unreferenced formal parameter
+Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\main.cpp(273,7): warning C4189: 'remove': local variable is initialized but not referenced
+Q:\Github\GAME3135_FinalProject\FinalProject\SDL2 Template\main.cpp(362,47): warning C4100: 'args': unreferenced formal parameter
   SDL2 Template.vcxproj -> Q:\Github\GAME3135_FinalProject\FinalProject\Debug\SDL2 Template.exe
   Q:\Github\GAME3135_FinalProject\FinalProject\lib\x86\glew32.dll
   Q:\Github\GAME3135_FinalProject\FinalProject\lib\x86\SDL2.dll
